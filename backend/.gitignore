@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Environment
+.env
+.env.local
+
+# Uploads
+uploads/
+
+# Model cache
+models/
+
+# OS
+.DS_Store

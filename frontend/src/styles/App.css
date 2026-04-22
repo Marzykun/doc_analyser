@@ -1,0 +1,262 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #2563eb;
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #ea580c;
+  --bg: #f9fafb;
+  --text: #111827;
+  --border: #e5e7eb;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.app {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+.app-header p {
+  font-size: 1.1rem;
+  color: #6b7280;
+}
+
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-layout {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.upload-section {
+  flex: 1;
+  min-width: 300px;
+}
+
+.results-section {
+  flex: 1;
+  min-width: 300px;
+}
+
+.upload-form {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.file-label {
+  display: block;
+  margin-bottom: 15px;
+  padding: 20px;
+  border: 2px dashed var(--border);
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 500;
+  color: #6b7280;
+  transition: all 0.2s;
+}
+
+.file-label:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: #eff6ff;
+}
+
+.file-input {
+  display: none;
+}
+
+.analyze-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.analyze-btn:hover:not(:disabled) {
+  background-color: #1d4ed8;
+}
+
+.analyze-btn:disabled {
+  background-color: #d1d5db;
+  cursor: not-allowed;
+}
+
+.error {
+  color: var(--danger);
+  margin-top: 15px;
+  padding: 12px;
+  background: #fee2e2;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.loading {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e0f2fe;
+  color: #0369a1;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.results-container {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.result-section {
+  padding: 20px;
+  background: #f3f4f6;
+  border-radius: 6px;
+}
+
+.result-section h3 {
+  margin-bottom: 15px;
+  color: var(--primary);
+}
+
+.result-section h4 {
+  margin: 10px 0 8px 0;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.clause-list {
+  list-style: none;
+}
+
+.clause-item {
+  margin-bottom: 15px;
+  padding: 12px;
+  background: white;
+  border-left: 4px solid var(--primary);
+  border-radius: 4px;
+}
+
+.clause-type {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+.clause-type.termination {
+  background: #fee2e2;
+  color: var(--danger);
+}
+
+.clause-type.payment {
+  background: #fef3c7;
+  color: var(--warning);
+}
+
+.clause-type.liability {
+  background: #dbeafe;
+  color: var(--primary);
+}
+
+.clause-text {
+  margin: 8px 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.confidence {
+  display: block;
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 8px;
+}
+
+.entities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.entity-group ul {
+  list-style: none;
+  background: white;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.entity-group li {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.entity-group li:last-child {
+  border-bottom: none;
+}
+
+.text-preview {
+  width: 100%;
+  height: 300px;
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.9rem;
+  resize: vertical;
+}
+
+@media (max-width: 768px) {
+  .dashboard-layout {
+    flex-direction: column;
+  }
+
+  .app-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+}

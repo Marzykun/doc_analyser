@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000/api
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=False
+      - FRONTEND_URL=http://localhost:5173
+    volumes:
+      - ./backend:/app
+      - uploads:/app/uploads
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: contract_analyzer
+      POSTGRES_USER: analyzer
+      POSTGRES_PASSWORD: secure_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
+  uploads:
